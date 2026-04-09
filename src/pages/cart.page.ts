@@ -1,27 +1,27 @@
 import { expect } from '@playwright/test';
-import { CartSelectors as S } from '../selectors/cart.selectors';
+import { CartSelectors } from '../selectors/cart.selectors';
 import { BasePage } from './base.page';
 
 export class CartPage extends BasePage {
   async validateItemCount(count: number) {
-    await expect(this.page.locator(S.CART_ITEM)).toHaveCount(count);
+    await expect(this.page.locator(CartSelectors.cartItem)).toHaveCount(count);
   }
 
   async getItemNames(): Promise<string[]> {
-    return this.page.locator(S.ITEM_NAME).allInnerTexts();
+    return this.page.locator(CartSelectors.cartItemName).allInnerTexts();
   }
 
   async removeItemByIndex(index: number) {
-    await this.page.locator(S.CART_ITEM).nth(index)
-      .getByRole('button', { name: S.REMOVE_BUTTON })
+    await this.page.locator(CartSelectors.cartItem).nth(index)
+      .getByRole('button', { name: CartSelectors.removeButton })
       .click();
   }
 
   async checkout() {
-    await this.page.locator(S.CHECKOUT_BUTTON).click();
+    await this.page.locator(CartSelectors.checkoutButton).click();
   }
 
   async continueShopping() {
-    await this.page.locator(S.CONTINUE_SHOPPING_BUTTON).click();
+    await this.page.locator(CartSelectors.continueShoppingButton).click();
   }
 }
