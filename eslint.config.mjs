@@ -16,10 +16,4 @@ export default tseslint.config(
       'no-empty-pattern': 'off',
     },
   },
-  {
-    files: ['src/utils/logger.ts'],
-    rules: {
-      'no-console': 'off',
-    },
-  },
 );

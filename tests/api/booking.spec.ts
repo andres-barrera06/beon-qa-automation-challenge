@@ -4,8 +4,8 @@ import { defaultBooking, updatedBooking } from '../../src/data/bookings.data';
 import { BookingSteps } from '../../src/steps/booking.steps';
 
 test.describe('Booking API', () => {
-  test('Full Booking Lifecycle', async ({ authClient, bookingClient, logger }) => {
-    const bookingSteps = new BookingSteps(authClient, bookingClient, logger);
+  test('Full Booking Lifecycle', async ({ authClient, bookingClient }) => {
+    const bookingSteps = new BookingSteps(authClient, bookingClient);
 
     await bookingSteps.authenticate(apiAdmin);
     await bookingSteps.createBooking(defaultBooking);
