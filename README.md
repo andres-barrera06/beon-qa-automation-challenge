@@ -401,9 +401,9 @@ User is logged in as `problem_user` with at least one product in the cart.
 
 **Additional Information**
 
-<video src="docs/screenshots/bug_6.mov" controls width="800"></video>
+<video src="docs/screenshots/bug_5.mov" controls width="800"></video>
 
-[Download video — bug_6.mov](docs/screenshots/bug_6.mov)
+[Download video — bug_5.mov](docs/screenshots/bug_5.mov)
 
 ---
 
@@ -441,6 +441,6 @@ The detail page should display information for **Sauce Labs Backpack**.
 
 **Additional Information**
 
-<video src="docs/screenshots/bug_5.mov" controls width="800"></video>
+<video src="docs/screenshots/bug_6.mov" controls width="800"></video>
 
-[Download video — bug_5.mov](docs/screenshots/bug_5.mov)
+[Download video — bug_6.mov](docs/screenshots/bug_6.mov)
