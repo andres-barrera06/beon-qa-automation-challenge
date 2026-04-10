@@ -15,10 +15,10 @@ test.describe('Checkout Flow', () => {
     await loginSteps.navigateToLogin();
     await loginSteps.loginWithCredentials(users.standard);
 
-    await inventorySteps.addItemsToCart([0, 1]);
+    const addedItemNames = await inventorySteps.addItemsToCart([0, 1]);
     await inventorySteps.navigateToCart();
 
-    await cartSteps.validateCartItemCount(2);
+    await cartSteps.validateCartContents(addedItemNames);
     await cartSteps.proceedToCheckout();
 
     await checkoutSteps.fillCheckoutInformation(checkoutInfo);

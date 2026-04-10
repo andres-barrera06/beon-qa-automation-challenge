@@ -7,6 +7,11 @@ export class CartPage extends BasePage {
     await expect(this.page.locator(CartSelectors.cartItem)).toHaveCount(count);
   }
 
+  async validateContents(expectedNames: string[]) {
+    await expect(this.page.locator(CartSelectors.cartItem)).toHaveCount(expectedNames.length);
+    await expect(this.page.locator(CartSelectors.cartItemName)).toHaveText(expectedNames);
+  }
+
   async getItemNames(): Promise<string[]> {
     return this.page.locator(CartSelectors.cartItemName).allInnerTexts();
   }
