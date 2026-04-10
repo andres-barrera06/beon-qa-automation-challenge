@@ -10,8 +10,4 @@ export abstract class BasePage {
   async getTitle(): Promise<string> {
     return this.page.title();
   }
-
-  async screenshot(name: string) {
-    await this.page.screenshot({ path: `test-results/screenshots/${name}.png` });
-  }
 }
