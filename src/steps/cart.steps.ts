@@ -10,6 +10,12 @@ export class CartSteps {
     });
   }
 
+  async validateCartContents(expectedNames: string[]) {
+    await test.step(`Validate cart contains ${expectedNames.length} items: ${expectedNames.join(', ')}`, async () => {
+      await this.cartPage.validateContents(expectedNames);
+    });
+  }
+
   async proceedToCheckout() {
     await test.step('Proceed to checkout', async () => {
       await this.cartPage.checkout();

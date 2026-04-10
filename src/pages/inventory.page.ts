@@ -9,6 +9,12 @@ export class InventoryPage extends BasePage {
       .click();
   }
 
+  async getItemNameByIndex(index: number): Promise<string> {
+    return this.page.locator(InventorySelectors.inventoryItem).nth(index)
+      .locator(InventorySelectors.inventoryItemName)
+      .innerText();
+  }
+
   async removeItemByIndex(index: number) {
     await this.page.locator(InventorySelectors.inventoryItem).nth(index)
       .getByRole('button', { name: InventorySelectors.removeButton })

@@ -20,6 +20,7 @@ export class CheckoutPage extends BasePage {
   }
 
   async expectOrderComplete() {
-    await expect(this.page.locator(CheckoutSelectors.completeHeader)).toBeVisible();
+    await expect(this.page.locator(CheckoutSelectors.completeHeader))
+      .toHaveText('Thank you for your order!');
   }
 }
