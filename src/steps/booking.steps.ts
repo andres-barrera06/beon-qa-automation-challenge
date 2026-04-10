@@ -27,17 +27,37 @@ export class BookingSteps {
   }
 
   async verifyBookingData(booking: Booking) {
-    await test.step('Read booking and validate data', async () => {
+    await test.step('Read booking and validate every field matches the payload', async () => {
       const fetched = await this.bookingClient.getById(this.bookingId);
-      expect(fetched.firstname).toBe(booking.firstname);
-      expect(fetched.lastname).toBe(booking.lastname);
+      expect(fetched).toMatchObject({
+        firstname: booking.firstname,
+        lastname: booking.lastname,
+        totalprice: booking.totalprice,
+        depositpaid: booking.depositpaid,
+        bookingdates: {
+          checkin: booking.bookingdates.checkin,
+          checkout: booking.bookingdates.checkout,
+        },
+        additionalneeds: booking.additionalneeds,
+      });
     });
   }
 
   async updateBooking(booking: Booking) {
-    await test.step('Update booking details', async () => {
+    await test.step('Update booking and validate the checkout date was changed', async () => {
       const updated = await this.bookingClient.update(this.bookingId, booking, this.token);
-      expect(updated.lastname).toBe(booking.lastname);
+      expect(updated.bookingdates.checkout).toBe(booking.bookingdates.checkout);
+      expect(updated).toMatchObject({
+        firstname: booking.firstname,
+        lastname: booking.lastname,
+        totalprice: booking.totalprice,
+        depositpaid: booking.depositpaid,
+        bookingdates: {
+          checkin: booking.bookingdates.checkin,
+          checkout: booking.bookingdates.checkout,
+        },
+        additionalneeds: booking.additionalneeds,
+      });
     });
   }
 
