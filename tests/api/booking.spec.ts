@@ -1,20 +1,20 @@
 import { test, expect } from '../../src/fixtures/api.fixture';
-import { API_ADMIN } from '../../src/data/users.data';
-import { DEFAULT_BOOKING, UPDATED_BOOKING } from '../../src/data/bookings.data';
+import { apiAdmin } from '../../src/data/users.data';
+import { defaultBooking, updatedBooking } from '../../src/data/bookings.data';
 
 test.describe('Booking API', () => {
   test('Full Booking Lifecycle', async ({ authClient, bookingClient }) => {
-    const token = await authClient.authenticate(API_ADMIN);
+    const token = await authClient.authenticate(apiAdmin);
 
-    const created = await bookingClient.create(DEFAULT_BOOKING);
+    const created = await bookingClient.create(defaultBooking);
     const bookingId = created.bookingid;
 
     const fetched = await bookingClient.getById(bookingId);
-    expect(fetched.firstname).toBe(DEFAULT_BOOKING.firstname);
-    expect(fetched.lastname).toBe(DEFAULT_BOOKING.lastname);
+    expect(fetched.firstname).toBe(defaultBooking.firstname);
+    expect(fetched.lastname).toBe(defaultBooking.lastname);
 
-    const updated = await bookingClient.update(bookingId, UPDATED_BOOKING, token);
-    expect(updated.lastname).toBe(UPDATED_BOOKING.lastname);
+    const updated = await bookingClient.update(bookingId, updatedBooking, token);
+    expect(updated.lastname).toBe(updatedBooking.lastname);
 
     await bookingClient.remove(bookingId, token);
     await bookingClient.verifyDeleted(bookingId);

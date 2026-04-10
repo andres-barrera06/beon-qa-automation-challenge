@@ -1,10 +1,10 @@
 import { test } from '../../src/fixtures/ui.fixture';
-import { USERS, CHECKOUT_INFO } from '../../src/data/users.data';
+import { users, checkoutInfo } from '../../src/data/users.data';
 
 test.describe('Checkout Flow', () => {
   test.beforeEach(async ({ loginPage }) => {
     await loginPage.navigate();
-    await loginPage.login(USERS.standard);
+    await loginPage.login(users.standard);
   });
 
   test('E2E Purchase Flow', async ({ inventoryPage, cartPage, checkoutPage }) => {
@@ -15,7 +15,7 @@ test.describe('Checkout Flow', () => {
     await cartPage.validateItemCount(2);
     await cartPage.checkout();
 
-    await checkoutPage.fillInformation(CHECKOUT_INFO);
+    await checkoutPage.fillInformation(checkoutInfo);
     await checkoutPage.finish();
     await checkoutPage.expectOrderComplete();
   });
