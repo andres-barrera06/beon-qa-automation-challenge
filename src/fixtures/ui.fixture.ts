@@ -4,6 +4,15 @@ import { InventoryPage } from '../pages/inventory.page';
 import { CartPage } from '../pages/cart.page';
 import { CheckoutPage } from '../pages/checkout.page';
 
+/**
+ * UI test fixture.
+ *
+ * Injects a fresh Page Object per test, built on top of Playwright's built-in
+ * `page` fixture. Tests declare only the page objects they need and receive
+ * them already instantiated — no manual `new LoginPage(page)` in the tests,
+ * and nothing to tear down because the underlying `page` is owned by
+ * Playwright.
+ */
 type UIFixtures = {
   loginPage: LoginPage;
   inventoryPage: InventoryPage;

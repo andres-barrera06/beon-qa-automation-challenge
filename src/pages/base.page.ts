@@ -1,5 +1,12 @@
 import { Page } from '@playwright/test';
 
+/**
+ * Abstract parent for every Page Object.
+ *
+ * Holds the Playwright `Page` instance and exposes helpers that are shared
+ * across all pages (navigation waits, screenshots, title). Subclasses should
+ * only add page-specific actions — never duplicate what lives here.
+ */
 export abstract class BasePage {
   constructor(protected page: Page) {}
 
