@@ -219,7 +219,7 @@ Exploratory testing was performed manually on [SauceDemo](https://www.saucedemo.
 
 **Description**
 
-All products display the same image of a dog (`sl-404.jpg`) instead of their actual product image. No product has the correct image assigned.
+All products on the inventory page display the same placeholder image (a dog) instead of their actual product image. No product has the correct image assigned.
 
 **Precondition**
 
@@ -229,11 +229,11 @@ User is logged in as `problem_user`.
 
 1. Navigate to the inventory page.
 2. Observe the image displayed for any product.
-3. Verify that all products show the same incorrect image (`sl-404.jpg`).
+3. Compare the image against the product name and description.
 
 **Actual Result**
 
-All products show the generic `sl-404.jpg` image (a dog) regardless of the product.
+Every product shows the same placeholder image regardless of the product.
 
 **Expected Result**
 
@@ -241,7 +241,7 @@ Each product should display its own corresponding image.
 
 **Additional Information**
 
-![BUG-001 screenshot](docs/screenshots/bug-001-product-images.png)
+![BUG-001 screenshot](docs/screenshots/Bug_1.png)
 
 ---
 
@@ -280,7 +280,7 @@ The product should be added to the cart, the badge should increment, and the but
 
 **Additional Information**
 
-![BUG-002 screenshot](docs/screenshots/bug-002-add-to-cart.png)
+![BUG-002 screenshot](docs/screenshots/bug_2.png)
 
 ---
 
@@ -319,7 +319,7 @@ Products should be reordered according to the selected criterion.
 
 **Additional Information**
 
-![BUG-003 screenshot](docs/screenshots/bug-003-sorting.png)
+![BUG-003 screenshot](docs/screenshots/bug_3.png)
 
 ---
 
@@ -358,7 +358,9 @@ The product should be removed from the cart and the badge should decrement.
 
 **Additional Information**
 
-![BUG-004 screenshot](docs/screenshots/bug-004-remove-button.png)
+<video src="docs/screenshots/bug_4.mov" controls width="800"></video>
+
+[Download video — bug_4.mov](docs/screenshots/bug_4.mov)
 
 ---
 
@@ -399,7 +401,9 @@ User is logged in as `problem_user` with at least one product in the cart.
 
 **Additional Information**
 
-![BUG-005 screenshot](docs/screenshots/bug-005-checkout-form.png)
+<video src="docs/screenshots/bug_5.mov" controls width="800"></video>
+
+[Download video — bug_5.mov](docs/screenshots/bug_5.mov)
 
 ---
 
@@ -437,4 +441,6 @@ The detail page should display information for **Sauce Labs Backpack**.
 
 **Additional Information**
 
-![BUG-006 screenshot](docs/screenshots/bug-006-product-detail.png)
+<video src="docs/screenshots/bug_6.mov" controls width="800"></video>
+
+[Download video — bug_6.mov](docs/screenshots/bug_6.mov)
