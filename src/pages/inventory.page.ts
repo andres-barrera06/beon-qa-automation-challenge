@@ -1,41 +1,37 @@
 import { expect } from '@playwright/test';
+import { InventorySelectors } from '../selectors/inventory.selectors';
 import { BasePage } from './base.page';
 
 export class InventoryPage extends BasePage {
-  private readonly inventoryItems = this.page.locator('.inventory_item');
-  private readonly cartBadge = this.page.locator('.shopping_cart_badge');
-  private readonly cartLink = this.page.locator('.shopping_cart_link');
-  private readonly sortDropdown = this.page.locator('[data-test="product-sort-container"]');
-
   async addItemByIndex(index: number) {
-    await this.inventoryItems.nth(index)
-      .getByRole('button', { name: 'Add to cart' })
+    await this.page.locator(InventorySelectors.inventoryItem).nth(index)
+      .getByRole('button', { name: InventorySelectors.addToCartButton })
       .click();
   }
 
   async removeItemByIndex(index: number) {
-    await this.inventoryItems.nth(index)
-      .getByRole('button', { name: 'Remove' })
+    await this.page.locator(InventorySelectors.inventoryItem).nth(index)
+      .getByRole('button', { name: InventorySelectors.removeButton })
       .click();
   }
 
   async getItemCount(): Promise<number> {
-    return this.inventoryItems.count();
+    return this.page.locator(InventorySelectors.inventoryItem).count();
   }
 
   async getCartBadgeCount(): Promise<string> {
-    return this.cartBadge.innerText();
+    return this.page.locator(InventorySelectors.shoppingCartBadge).innerText();
   }
 
   async sortBy(option: 'az' | 'za' | 'lohi' | 'hilo') {
-    await this.sortDropdown.selectOption(option);
+    await this.page.locator(InventorySelectors.productSortDropdown).selectOption(option);
   }
 
   async goToCart() {
-    await this.cartLink.click();
+    await this.page.locator(InventorySelectors.shoppingCartLink).click();
   }
 
   async expectItemsVisible() {
-    await expect(this.inventoryItems.first()).toBeVisible();
+    await expect(this.page.locator(InventorySelectors.inventoryItem).first()).toBeVisible();
   }
 }
