@@ -20,8 +20,7 @@ export default defineConfig({
       name: 'UI Tests',
       testDir: './tests/ui',
       use: {
-        ...devices['Desktop Chrome'],
-        launchOptions: { slowMo: 500 },
+        ...devices['Desktop Chrome']
       },
     },
     {
