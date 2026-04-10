@@ -186,7 +186,11 @@ E2E Purchase Flow
 View the report locally after running tests:
 
 ```bash
+# Using the npm script
 npm run report
+
+# Or directly with Playwright
+npx playwright show-report
 ```
 
 ---
