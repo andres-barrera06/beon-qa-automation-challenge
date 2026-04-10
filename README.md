@@ -217,13 +217,13 @@ Exploratory testing was performed manually on [SauceDemo](https://www.saucedemo.
 | **Area** | Inventory / UI |
 | **Status** | Open |
 
-**Description**
-
-All products on the inventory page display the same placeholder image (a dog) instead of their actual product image. No product has the correct image assigned.
-
 **Precondition**
 
 User is logged in as `problem_user`.
+
+**Description**
+
+All products on the inventory page display the same placeholder image (a dog) instead of their actual product image. No product has the correct image assigned.
 
 **Steps to Reproduce**
 
@@ -256,13 +256,13 @@ Each product should display its own corresponding image.
 | **Area** | Shopping Cart |
 | **Status** | Open |
 
-**Description**
-
-The `Add to cart` button does not respond for **Bolt T-Shirt**, **Fleece Jacket**, and **T-Shirt (Red)**. The cart is not updated and the button does not change state.
-
 **Precondition**
 
 User is logged in as `problem_user` and is on the inventory page.
+
+**Description**
+
+The `Add to cart` button does not respond for **Bolt T-Shirt**, **Fleece Jacket**, and **T-Shirt (Red)**. The cart is not updated and the button does not change state.
 
 **Steps to Reproduce**
 
@@ -295,13 +295,13 @@ The product should be added to the cart, the badge should increment, and the but
 | **Area** | Inventory / Filters |
 | **Status** | Open |
 
-**Description**
-
-The sorting options `Z-A` and `Price Low-High` do not change the order of the products. The list remains in the default order regardless of the selection.
-
 **Precondition**
 
 User is logged in as `problem_user` and is on the inventory page.
+
+**Description**
+
+The sorting options `Z-A` and `Price Low-High` do not change the order of the products. The list remains in the default order regardless of the selection.
 
 **Steps to Reproduce**
 
@@ -334,13 +334,13 @@ Products should be reordered according to the selected criterion.
 | **Area** | Shopping Cart |
 | **Status** | Open |
 
-**Description**
-
-The `Remove` buttons on the inventory page can be clicked, but products are not removed from the cart. The cart badge count does not decrease.
-
 **Precondition**
 
 User is logged in as `problem_user` with one or more products already added to the cart.
+
+**Description**
+
+The `Remove` buttons on the inventory page can be clicked, but products are not removed from the cart. The cart badge count does not decrease.
 
 **Steps to Reproduce**
 
@@ -375,13 +375,13 @@ The product should be removed from the cart and the badge should decrement.
 | **Area** | Checkout / Form |
 | **Status** | Open |
 
-**Description**
-
-When filling in the checkout form, the `firstName` field displays the value entered in `lastName`, and the `lastName` field is left empty. Values shift between fields, triggering a validation error.
-
 **Precondition**
 
 User is logged in as `problem_user` with at least one product in the cart.
+
+**Description**
+
+When filling in the checkout form, the `firstName` field displays the value entered in `lastName`, and the `lastName` field is left empty. Values shift between fields, triggering a validation error.
 
 **Steps to Reproduce**
 
@@ -418,13 +418,13 @@ User is logged in as `problem_user` with at least one product in the cart.
 | **Area** | Inventory / Product Detail |
 | **Status** | Open |
 
-**Description**
-
-Clicking on any product to view its detail opens a page that belongs to a different product. Detail page links are incorrectly mapped.
-
 **Precondition**
 
 User is logged in as `problem_user` and is on the inventory page.
+
+**Description**
+
+Clicking on any product to view its detail opens a page that belongs to a different product. Detail page links are incorrectly mapped.
 
 **Steps to Reproduce**
 
