@@ -191,36 +191,250 @@ npm run report
 
 ---
 
-## Manual QA Bug Report (problem_user)
+## Manual QA Bug Report — SauceDemo (`problem_user`)
 
-Exploratory testing was performed manually on [SauceDemo](https://www.saucedemo.com/) using the `problem_user` credentials.
+Exploratory testing was performed manually on [SauceDemo](https://www.saucedemo.com/) using the `problem_user` / `secret_sauce` credentials. **6 bugs** were identified across the purchase flow.
 
-### Bug #1: Product images are incorrect
+| ID | Title | Area | Severity |
+|---|---|---|---|
+| [BUG-001](#bug-001--all-product-images-are-incorrect) | All product images are incorrect | Inventory / UI | High |
+| [BUG-002](#bug-002--add-to-cart-button-does-not-work-for-some-products) | Add to cart button does not work for some products | Shopping Cart | High |
+| [BUG-003](#bug-003--sorting-options-do-not-work) | Sorting options do not work | Inventory / Filters | Medium |
+| [BUG-004](#bug-004--remove-button-does-not-remove-items-from-the-cart) | Remove button does not remove items from the cart | Shopping Cart | High |
+| [BUG-005](#bug-005--checkout-form--firstname-field-takes-the-value-of-lastname) | Checkout form — firstName field takes the value of lastName | Checkout / Form | High |
+| [BUG-006](#bug-006--product-detail-page-shows-the-wrong-item) | Product detail page shows the wrong item | Inventory / Product Detail | High |
 
-| Field | Detail |
+---
+
+### BUG-001 — All product images are incorrect
+
+**Key details**
+
+| | |
 |---|---|
-| **Title** | Product images do not match their corresponding product names |
-| **Severity** | Medium |
-| **Steps to Reproduce** | 1. Navigate to https://www.saucedemo.com/ <br> 2. Log in with `problem_user` / `secret_sauce` <br> 3. Observe the product listing on the inventory page |
-| **Expected Result** | Each product should display its correct image matching the product name and description |
-| **Actual Result** | All products display the same incorrect image (a dog) instead of their actual product images |
-
-### Bug #2: "Add to cart" button is broken for some items
-
-| Field | Detail |
-|---|---|
-| **Title** | Unable to add certain items to the cart |
+| **ID** | BUG-001 |
 | **Severity** | High |
-| **Steps to Reproduce** | 1. Log in with `problem_user` / `secret_sauce` <br> 2. Click "Add to cart" on "Sauce Labs Onesie" or other affected items <br> 3. Check the cart |
-| **Expected Result** | The selected item should appear in the cart and the button should change to "Remove" |
-| **Actual Result** | The item is not added to the cart; the button does not toggle or behaves inconsistently |
+| **Area** | Inventory / UI |
+| **Status** | Open |
 
-### Bug #3: Sorting does not work
+**Description**
 
-| Field | Detail |
+All products display the same image of a dog (`sl-404.jpg`) instead of their actual product image. No product has the correct image assigned.
+
+**Precondition**
+
+User is logged in as `problem_user`.
+
+**Steps to Reproduce**
+
+1. Navigate to the inventory page.
+2. Observe the image displayed for any product.
+3. Verify that all products show the same incorrect image (`sl-404.jpg`).
+
+**Actual Result**
+
+All products show the generic `sl-404.jpg` image (a dog) regardless of the product.
+
+**Expected Result**
+
+Each product should display its own corresponding image.
+
+**Additional Information**
+
+![BUG-001 screenshot](docs/screenshots/bug-001-product-images.png)
+
+---
+
+### BUG-002 — Add to cart button does not work for some products
+
+**Key details**
+
+| | |
 |---|---|
-| **Title** | Product sorting filter does not reorder items |
+| **ID** | BUG-002 |
+| **Severity** | High |
+| **Area** | Shopping Cart |
+| **Status** | Open |
+
+**Description**
+
+The `Add to cart` button does not respond for **Bolt T-Shirt**, **Fleece Jacket**, and **T-Shirt (Red)**. The cart is not updated and the button does not change state.
+
+**Precondition**
+
+User is logged in as `problem_user` and is on the inventory page.
+
+**Steps to Reproduce**
+
+1. Click `Add to cart` on the **Bolt T-Shirt** product.
+2. Observe that the button does not change and the cart badge does not increment.
+3. Repeat with **Fleece Jacket** and **T-Shirt (Red)**.
+
+**Actual Result**
+
+The click produces no visible action. Only **Solo Backpack**, **Bike Light**, and **Onesie** work correctly.
+
+**Expected Result**
+
+The product should be added to the cart, the badge should increment, and the button should change to `Remove`.
+
+**Additional Information**
+
+![BUG-002 screenshot](docs/screenshots/bug-002-add-to-cart.png)
+
+---
+
+### BUG-003 — Sorting options do not work
+
+**Key details**
+
+| | |
+|---|---|
+| **ID** | BUG-003 |
 | **Severity** | Medium |
-| **Steps to Reproduce** | 1. Log in with `problem_user` / `secret_sauce` <br> 2. Select any sort option from the dropdown (e.g., "Price (low to high)") |
-| **Expected Result** | Products should reorder according to the selected sort criteria |
-| **Actual Result** | Products remain in the same order regardless of the selected filter |
+| **Area** | Inventory / Filters |
+| **Status** | Open |
+
+**Description**
+
+The sorting options `Z-A` and `Price Low-High` do not change the order of the products. The list remains in the default order regardless of the selection.
+
+**Precondition**
+
+User is logged in as `problem_user` and is on the inventory page.
+
+**Steps to Reproduce**
+
+1. Select `Name (Z to A)` from the sorting dropdown.
+2. Observe that the product order does not change.
+3. Repeat with `Price (low to high)`.
+
+**Actual Result**
+
+The product order does not change when selecting `Z-A` or `Price Low-High`. Only the default order (`A-Z`) works.
+
+**Expected Result**
+
+Products should be reordered according to the selected criterion.
+
+**Additional Information**
+
+![BUG-003 screenshot](docs/screenshots/bug-003-sorting.png)
+
+---
+
+### BUG-004 — Remove button does not remove items from the cart
+
+**Key details**
+
+| | |
+|---|---|
+| **ID** | BUG-004 |
+| **Severity** | High |
+| **Area** | Shopping Cart |
+| **Status** | Open |
+
+**Description**
+
+The `Remove` buttons on the inventory page can be clicked, but products are not removed from the cart. The cart badge count does not decrease.
+
+**Precondition**
+
+User is logged in as `problem_user` with one or more products already added to the cart.
+
+**Steps to Reproduce**
+
+1. Click the `Remove` button on a product in the inventory page.
+2. Observe the cart badge count.
+3. Open the cart and verify that the product is still there.
+
+**Actual Result**
+
+The button responds visually to the click, but the item remains in the cart and the badge count does not change.
+
+**Expected Result**
+
+The product should be removed from the cart and the badge should decrement.
+
+**Additional Information**
+
+![BUG-004 screenshot](docs/screenshots/bug-004-remove-button.png)
+
+---
+
+### BUG-005 — Checkout form — firstName field takes the value of lastName
+
+**Key details**
+
+| | |
+|---|---|
+| **ID** | BUG-005 |
+| **Severity** | High |
+| **Area** | Checkout / Form |
+| **Status** | Open |
+
+**Description**
+
+When filling in the checkout form, the `firstName` field displays the value entered in `lastName`, and the `lastName` field is left empty. Values shift between fields, triggering a validation error.
+
+**Precondition**
+
+User is logged in as `problem_user` with at least one product in the cart.
+
+**Steps to Reproduce**
+
+1. Proceed to checkout.
+2. Enter `Test` in the **First Name** field.
+3. Enter `User` in the **Last Name** field.
+4. Click `Continue`.
+5. Observe the validation error.
+
+**Actual Result**
+
+**First Name** shows `User` and **Last Name** is left empty, triggering the error: `Last Name is required`.
+
+**Expected Result**
+
+**First Name** should display `Test` and **Last Name** should display `User`.
+
+**Additional Information**
+
+![BUG-005 screenshot](docs/screenshots/bug-005-checkout-form.png)
+
+---
+
+### BUG-006 — Product detail page shows the wrong item
+
+**Key details**
+
+| | |
+|---|---|
+| **ID** | BUG-006 |
+| **Severity** | High |
+| **Area** | Inventory / Product Detail |
+| **Status** | Open |
+
+**Description**
+
+Clicking on any product to view its detail opens a page that belongs to a different product. Detail page links are incorrectly mapped.
+
+**Precondition**
+
+User is logged in as `problem_user` and is on the inventory page.
+
+**Steps to Reproduce**
+
+1. Click on the **Sauce Labs Backpack** product.
+2. Observe which product is shown on the detail page.
+
+**Actual Result**
+
+The detail page for **Sauce Labs Fleece Jacket** is shown instead. Each product leads to a different product's detail page.
+
+**Expected Result**
+
+The detail page should display information for **Sauce Labs Backpack**.
+
+**Additional Information**
+
+![BUG-006 screenshot](docs/screenshots/bug-006-product-detail.png)
