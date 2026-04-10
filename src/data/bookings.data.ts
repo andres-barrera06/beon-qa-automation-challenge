@@ -1,6 +1,6 @@
 import { Booking } from '../models/booking.model';
 
-export const default_booking: Booking = {
+export const defaultBooking: Booking = {
   firstname: 'Andres',
   lastname: 'Barrera',
   totalprice: 100,
@@ -12,7 +12,7 @@ export const default_booking: Booking = {
   additionalneeds: 'Breakfast',
 };
 
-export const updated_booking: Booking = {
+export const updatedBooking: Booking = {
   firstname: 'Andres',
   lastname: 'Updated',
   totalprice: 150,

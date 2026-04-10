@@ -6,7 +6,7 @@ export const users: Record<string, Credentials> = {
   problem: { username: 'problem_user', password: 'secret_sauce' },
 };
 
-export const api_admin: Credentials = {
+export const apiAdmin: Credentials = {
   username: 'admin',
   password: 'password123',
 };
