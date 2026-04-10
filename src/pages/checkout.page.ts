@@ -1,32 +1,25 @@
 import { expect } from '@playwright/test';
 import { CheckoutInfo } from '../models/user.model';
+import { CheckoutSelectors } from '../selectors/checkout.selectors';
 import { BasePage } from './base.page';
 
 export class CheckoutPage extends BasePage {
-  private readonly firstNameInput = this.page.getByPlaceholder('First Name');
-  private readonly lastNameInput = this.page.getByPlaceholder('Last Name');
-  private readonly zipCodeInput = this.page.getByPlaceholder('Zip/Postal Code');
-  private readonly continueButton = this.page.getByRole('button', { name: 'Continue' });
-  private readonly finishButton = this.page.getByRole('button', { name: 'Finish' });
-  private readonly successMessage = this.page.getByText('Thank you for your order!');
-  private readonly summaryTotal = this.page.locator('.summary_total_label');
-
   async fillInformation(info: CheckoutInfo) {
-    await this.firstNameInput.fill(info.firstName);
-    await this.lastNameInput.fill(info.lastName);
-    await this.zipCodeInput.fill(info.zipCode);
-    await this.continueButton.click();
+    await this.page.locator(CheckoutSelectors.firstNameInput).fill(info.firstName);
+    await this.page.locator(CheckoutSelectors.lastNameInput).fill(info.lastName);
+    await this.page.locator(CheckoutSelectors.postalCodeInput).fill(info.zipCode);
+    await this.page.locator(CheckoutSelectors.continueButton).click();
   }
 
   async finish() {
-    await this.finishButton.click();
+    await this.page.locator(CheckoutSelectors.finishButton).click();
   }
 
   async getTotalPrice(): Promise<string> {
-    return this.summaryTotal.innerText();
+    return this.page.locator(CheckoutSelectors.totalPriceLabel).innerText();
   }
 
   async expectOrderComplete() {
-    await expect(this.successMessage).toBeVisible();
+    await expect(this.page.locator(CheckoutSelectors.completeHeader)).toBeVisible();
   }
 }
