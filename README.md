@@ -28,6 +28,13 @@ npx playwright install chromium
 | `npm run lint` | Run ESLint |
 | `npm run lint:fix` | Run ESLint with auto-fix |
 
+### Run a specific test file
+
+```bash
+npx playwright test tests/ui/checkout.spec.ts
+npx playwright test tests/api/booking.spec.ts
+```
+
 ## Framework Architecture
 
 ```
